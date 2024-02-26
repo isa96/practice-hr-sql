@@ -1,0 +1,45 @@
+ Aggregate Marks
+There is a database containing the marks of some students in various subjects. The data may contain any number of subjects for a student.
+
+ 
+
+Retrieve the records of students who have a sum of marks greater than or equal to 500. The result should be in the following format: STUDENT_ID SUM_OF_MARKS sorted descending by STUDENT_ID.
+
+ 
+
+Schema
+There is 1 table: marks.
+
+marks
+Name	Type	Description
+STUDENT_ID	INTEGER	This is the student's unique ID.
+MARKS	INTEGER	These are the marks obtained.
+Sample Data Table
+marks
+STUDENT_ID	MARKS
+1	450
+2	200
+3	260
+2	300
+3	250
+ 
+
+Sample Output
+
+3 510
+2 500
+ 
+
+Explanation
+
+3 has a sum of 510, so it is printed in the query results.
+1 has a sum of 450, so it does not get printed in the query results.
+2 has a sum of 500, so it is printed in the query results.
+
+//CODE
+
+SELECT student_id, sum(marks.marks) AS sum_of_marks
+FROM marks
+GROUP BY student_id
+HAVING sum(marks.marks) >= 500
+ORDER BY student_id DESC;

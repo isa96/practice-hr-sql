@@ -1,0 +1,36 @@
+Clumsy Administrator
+A company maintains the records of all employees. The company pays the database administrator too little so the work has been quite clumsy. The administrator carelessly inserted the records of many employees into the employee records table multiple times. An employee's record is considered duplicate only if all columns (fields) of the employee's record are duplicated.
+
+ 
+
+Write a query to find the names of employees whose records occur more than once in the table.
+
+ 
+
+Schema
+You are provided 1 table: EMPLOYEE.
+
+EMPLOYEE
+Name	Type	Description
+NAME	STRING	The name of the employee.
+PHONE	STRING	The telephone number of the employee.
+AGE	INTEGER	The age of the employee.
+Sample Data Tables
+EMPLOYEE
+NAME	PHONE	AGE
+Sam	1000040000	30
+Alex	1000020000	60
+Alex	1000020012	65
+Sam	1000040000	30
+Chris	1000012000	34
+Chris	1000012000	34
+ 
+
+Here, the exact records of Sam and Chris occur more than once in the table. Hence, Sam and Chris are the employees in the resultant output.
+
+//CODE
+
+SELECT DISTINCT employee.name
+FROM employee
+GROUP BY employee.name, employee.phone, employee.age
+HAVING Count(*) > 1;

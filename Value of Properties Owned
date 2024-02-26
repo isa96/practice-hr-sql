@@ -1,0 +1,49 @@
+Value of Properties Owned
+There are two tables in a database of real estate owners. One has ownership information and the other has price information, in millions. An owner may own multiple houses, but a house will have only one owner.
+
+ 
+
+Write a query to print the IDs of the owners who have at least 100 million worth of houses and own more than 1 house. The order of output does not matter. The result should be in the format: BUYER_ID TOTAL_WORTH
+
+ 
+
+Schema
+There are 2 tables: house, price.
+
+house
+Name	Type	Description
+BUYER_ID	INTEGER	Unique buyer ID.
+HOUSE_ID	STRING	Unique house ID.
+price
+Name	Type	Description
+HOUSE_ID	STRING	Unique house ID. The primary key.
+PRICE	INTEGER	The price of the house.
+Sample Data Tables
+house
+BUYER_ID	HOUSE_ID
+1	abc123
+2	def456
+3	abc456
+1	def123
+2	def789
+price
+HOUSE_ID	PRICE
+abc123	60
+def456	20
+abc456	120
+def123	40
+def789	70
+ 
+
+Sample Output
+
+1 100
+
+//CODE
+
+SELECT house.buyer_id, sum(price.price) as total_worth
+FROM house
+JOIN price
+ON house.house_id = price.house_id
+GROUP BY house.buyer_id
+HAVING sum(price.price) >= 100 AND count(price.house_id) > 1;

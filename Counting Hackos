@@ -1,0 +1,74 @@
+A coding platform maintains all the participating hackers' data in the HACKER table. Write a query to print the names of all the hackers who have earned more than 100 hackos in less than 10 months. Print the output in the ascending order of their ID.
+
+ 
+
+Input Format
+
+HACKER
+Name	Type	Description
+ID	Integer	A hacker ID in the inclusive range [1, 1000]. This is the primary key.
+NAME	String	A hacker name. This field contains between 1 and 100 characters (inclusive).
+MONTHS	Integer	The total number of months the hacker has been programming.
+HACKOS	Integer	The total number of points the hacker gained per month.
+The names should be printed in the ascending order of their ID.
+
+ 
+
+Output Format
+
+Each row of results must contain the name of a hacker who has earned more than 100 hackos in less than 10 months, in the following format:
+
+ 
+
+HACKER.NAME
+ 
+
+Sample Input
+
+HACKER
+ID	NAME	MONTHS	HACKOS
+1	Frances White	5	20
+2	Carolyn Bradley	2	10
+3	Annie Fernandez	10	5
+4	Ruth Hanson	5	15
+5	Paula Fuller	6	15
+6	Bonnie Johnston	8	12
+7	Ruth Gutierrez	7	10
+8	Ernest Thomas	4	30
+9	Joe Garza	5	25
+10	Anne Harris	7	15
+ 
+
+Sample Output
+
+Ernest Thomas
+Joe Garza
+Anne Harris
+ 
+
+Explanation
+
+The respective earnings of hackers since they started coding is described below:
+
+Frances White started coding 5 months ago and earned 20 hackos per month. So the total earned hackos are 5 × 20 = 100.
+Carolyn Bradley started coding 2 months ago and earned 10 hackos per month. So the total earned hackos are 2 × 10 = 20.
+Annie Fernandez started coding 10 months ago and earned 5 hackos per month. So the total earned hackos are 10 × 5 = 50.
+Ruth Hanson started coding 5 months ago and earned 15 hackos per month. So the total earned hackos are 5 × 15 = 75.
+Paula Fuller started coding 6 months ago and earned 15 hackos per month. So the total earned hackos are 6 × 15 = 90.
+Bonnie Johnston started coding 8 months ago and earned 12 hackos per month. So the total earned hackos are 8 × 12 = 96.
+Ruth Gutierrez started coding 7 months ago and earned 10 hackos per month. So the total earned hackos are 7 × 10 = 70.
+Ernest Thomas started coding 4 months ago and earned 30 hackos per month. So the total earned hackos are 4 × 30 = 120.
+Joe Garza started coding 5 months ago and earned 25 hackos per month. So the total earned hackos are 5 × 25 = 125.
+Anne Harris started coding 7 months ago and earned 15 hackos per month. So the total earned hackos are 7 × 15 = 105.
+So, Ernest Thomas, Joe Garza, and Anne Harris have earned more than 100 hackos in less than 10 months.
+
+ 
+/*
+Enter your query here.
+*/
+//CODE
+
+SELECT name
+FROM hacker
+WHERE months < 10 AND hackos * months > 100
+ORDER BY ID ASC;

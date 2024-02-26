@@ -1,0 +1,73 @@
+The Beautiful Collection
+A shopkeeper maintains the count of the different colored balls (Red, green, and blue) in the COLLECTION table. Each row of the table represents one of the following types:
+
+ 
+
+GOOD: If the count of the red, green, and blue balls are equal.
+BAD: If the count of any two colored balls are equal, i.e., only one of the following conditions is true: 
+Red balls count is equal to green balls.
+Red balls count is equal to blue balls.
+Green balls count is equal to blue balls.
+WORSE: If all the colored balls have different counts.
+Write a query to print the type which is represented by each row of the table. Note that the output is case-sensitive, so make sure to output only GOOD, BAD, or WORSE.
+
+ 
+
+Input Format
+
+COLLECTION
+Name	Type	Description
+RED	Integer	This describes the count of red balls. The count can be between 30 units and 100 units (inclusive). 
+GREEN	Integer	This describes the count of green balls. The count can be between 30 units and 100 units (inclusive). 
+BLUE	Integer	This describes the count of blue balls. The count can be between 30 units and 100 units (inclusive). 
+ 
+
+Output Format
+
+Each row of the result should contain one of the types which are described above, in the following format. Note that the output is case-sensitive, so make sure to output only GOOD , BAD , or  WORSE .
+
+ 
+
+TYPE_OF_COLLECTION
+ 
+
+Sample Input
+
+COLLECTION
+RED	GREEN	BLUE
+65	65	87
+50	50	50
+30	50	100
+40	50	90
+92	50	50
+ 
+
+Sample Output
+
+BAD
+GOOD
+WORSE
+WORSE
+BAD
+ 
+
+Explanation
+
+The type of collection represented by each row is explained below:
+
+The count of the red balls is equal to the count of the green balls. But the count of blue balls is not equal to the count of red or green balls. So, the type is BAD.
+The count of the red, green, and blue balls are equal. So, the type is GOOD.
+The count of the red, green, and blue balls are different from each other. So, the type is WORSE.
+The count of the red, green, and blue balls are different from each other. So, the type is WORSE.
+The count of the green balls is equal to the count of the blue balls. But the count of red balls is not equal to the count of green or blue balls. So, the type is BAD.
+
+//CODE
+
+
+SELECT (
+    CASE
+    WHEN red = green AND green = blue THEN 'GOOD'
+    WHEN red <> green AND red <> blue AND green <> blue THEN 'WORSE'
+    ELSE 'BAD'
+    END)
+FROM collection;

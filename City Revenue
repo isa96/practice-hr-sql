@@ -1,0 +1,51 @@
+A number of cities each have a number of agencies that estimate revenues. The average revenue of a city is defined as the average of all agencies' estimates of revenue for a city.
+
+ 
+
+Write a query to print the floor of the average revenue of each city. The order of output does not matter. The result should be in the following format: CITY_NAME AVERAGE_REVENUE
+
+ 
+
+Schema
+There are 2 tables: CITIES, and REVENUE.
+
+CITIES
+Name	Type	Description
+CITY_CODE	INTEGER	The city's PINCODE. This is a primary key.
+CITY_NAME	STRING	The city's name.
+REVENUE
+Name	Type	Description
+CITY_CODE	INTEGER	The city's PINCODE.
+REVENUE	INTEGER	The estimated revenue.
+Sample Data Tables
+CITIES
+CITY_CODE	CITY_NAME
+1	New York
+2	London
+3	Paris
+REVENUE
+CITY_CODE	REVENUE
+1	10
+2	5
+2	10
+3	15
+ 
+
+Sample Output
+
+New York 10
+London 7
+Paris 15
+Explanation
+
+New York has only one estimate, so it is the average.
+London has two estimates.  The average of those is floor((5+9)/2) = 7.
+Paris has only one estimate, so it is the average.
+
+//CODE
+
+SELECT DISTINCT cities.city_name, FLOOR(AVG(revenue.revenue)) 
+FROM cities
+JOIN revenue
+ON cities.city_code = revenue.city_code
+GROUP BY cities.city_name;

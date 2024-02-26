@@ -1,0 +1,4 @@
+-- employees and uin
+SELECT a.name, b.uin
+from employee a 
+LEFT join employee_uin b on a.id = b.id

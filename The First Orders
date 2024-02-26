@@ -1,0 +1,57 @@
+A company maintains information about its orders in the ORDERS table. Write a query to print details of the earliest five orders (sorted by ORDER_DATE, ascending) that have not been delivered (i.e., STATUS is not DELIVERED). If there are more than five orders to choose from, select the ones with the lowest order ID. Sort the output in the increasing order of order ID. The output should contain ID, ORDER_DATE, STATUS, CUSTOMER_ID.
+
+ 
+
+Schema
+ 
+
+Table: Orders
+
+column name	column type
+id	int
+order_date	
+date
+
+status	varchar(50)
+customer_id	int
+ 
+
+Sample Data Tables
+Sample Input
+
+ORDERS
+ID	ORDER_DATE	STATUS	CUSTOMER_ID
+10100	2003-01-06	PLACED	363
+10101	2003-01-06	PLACED	128
+10102	2003-01-06	IN TRANSIT	181
+10103	2003-01-06	DELIVERED	121
+10104	2003-01-07	DELIVERED	114
+10106	2003-01-07	IN TRANSIT	278
+10120	2003-01-07	PLACED	114
+10122	2003-05-05	IN TRANSIT	350
+10123	2003-05-05	DELIVERED	103
+ 
+
+Sample Output
+
+10100 2003-01-06 PLACED 363
+10101 2003-01-06 PLACED 128
+10102 2003-01-06 IN TRANSIT 181
+10106 2003-01-07 IN TRANSIT 278
+10120 2003-01-07 PLACED 114
+ 
+
+Explanation
+
+The orders with order numbers 10100, 10101, 10102, 10106, and 10120 are the earliest placed orders and also have order status not equal to DELIVERED, so all their information in the increasing order of their order ID is printed.
+
+/*
+Enter your query here.
+*/
+//CODE
+
+SELECT *
+FROM orders
+WHERE status <> 'delivered'
+ORDER BY order_date ASC, ID ASC 
+LIMIT 5;

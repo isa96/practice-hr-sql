@@ -1,0 +1,48 @@
+Trip Query
+A travel and tour company has 2 tables that relate to customers:  FAMILIES and COUNTRIES.  Each tour offers a discount if a minimum number of people book at the same time.
+
+ 
+
+Write a query to print the maximum number of discounted tours any 1 family in the FAMILIES table can choose from.
+
+ 
+Schema
+There are 2 tables: FAMILIES, COUNTRIES.
+
+FAMILIES
+Name	Type	Description
+ID	STRING	Unique ID of the family.
+NAME	STRING	Name of the primary contact.
+FAMILY_SIZE	INTEGER	Size of the family. 
+COUNTRIES
+Name	Type	Description
+ID	STRING	Unique ID of the country.
+NAME	STRING	Name of the country.
+MIN_SIZE	INTEGER	Minimum size group to get a discount.
+Sample Data Tables
+FAMILIES
+ID	NAME	FAMILY_SIZE
+c00dac11bde74750b4d207b9c182a85f	Alex Thomas	9
+eb6f2d3426694667ae3e79d6274114a4	Chris Gray	2
+ 
+
+COUNTRIES
+ID	NAME	MIN_SIZE
+023fd23615bd4ff4b2ae0a13ed7efec9	Bolivia	2
+be247f73de0f4b2d810367cb26941fb9	Cook Islands	4
+3e85ab80a6f84ef3b9068b21dbcc54b3	Brazil	4
+Sample Output
+
+3
+Explanation
+
+The Thomas family can choose from any of the 3 tours and qualify for the discount. The Gray family only qualifies for 1.
+
+
+//CODE
+
+SELECT COUNT(*)
+FROM families, countries
+WHERE families.family_size >= countries.min_size
+GROUP BY families.id
+LIMIT 1;

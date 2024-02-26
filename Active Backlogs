@@ -1,0 +1,53 @@
+Active Backlogs
+Return a list of all students with at least one occurrence of a backlog item.
+
+ 
+
+The result should be in the following format: student.name
+
+Schema
+There are 2 tables: student, backlog.
+
+student
+Name	Type	Description
+ID	INTEGER	unique id, the primary key.
+NAME	STRING	 
+backlog
+Name	Type	Description
+STUDENT_ID	INTEGER	foreign key, student.id
+SUBJECT_ID	STRING	 
+Sample Data Tables
+student
+ID	NAME
+1	Chris
+2	Sam
+3	Alex
+backlog
+STUDENT_ID	SUBJECT_ID
+1	abc123
+3	def456
+ 
+
+Sample Output
+
+Alex
+Chris
+Explanation
+
+ 
+
+Each student listed has at least one record in the backlog table.
+
+//CODE OPTION 1
+
+SELECT Distinct student.name
+FROM student
+JOIN backlog
+ON student.id = backlog.student_id;
+
+// CODE OPTION 2
+
+-- SELECT DISTINCT  student.NAME
+-- FROM backlog  
+-- INNER JOIN student 
+-- ON student.ID = backlog.STUDENT_ID 

@@ -1,0 +1,53 @@
+A company maintains the information about its orders in the ORDERS table. Write a query to print the number of orders which are not yet delivered, i.e., the ORDERS.STATUS is not equal to DELIVERED.
+
+ 
+
+Input Format
+
+ORDERS
+Name	Type	Description
+ID	Integer	A number in the inclusive range [1, 1000] which uniquely identifies the order. This is the primary key.
+ORDER_DATE	Date	The date when the order was placed.
+STATUS	String	This is the order status. It can be PLACED, SHIPPED, IN TRANSIT, DELIVERED.
+CUSTOMER_ID	Integer	A number in the inclusive range [1, 1000] which uniquely identifies the customer who placed the order.
+ 
+
+Output Format
+
+The output should be the count of orders that are not delivered yet.
+
+COUNT_OF_ORDERS_NOT_DELIVERED_YET
+ 
+
+Sample Input
+
+ORDERS
+ID	ORDER_DATE	STATUS	CUSTOMER_ID
+1	2003-01-06	PLACED	363
+2	2003-01-06	PLACED	128
+3	2003-01-06	IN TRANSIT	181
+4	2003-01-06	DELIVERED	121
+5	2003-01-07	DELIVERED	114
+6	2003-01-07	IN TRANSIT	278
+7	2003-01-07	PLACED	114
+8	2003-05-05	IN TRANSIT	350
+9	2003-05-05	DELIVERED	103
+ 
+
+Sample Output
+
+6
+ 
+
+Explanation
+
+Out of all the nine orders, the orders with ID 4, 5, and 9 are delivered while rest six are still undelivered.
+
+/*
+Enter your query here.
+*/
+// CODE
+
+SELECT count(orders.status)
+FROM orders
+WHERE orders.status != "delivered";

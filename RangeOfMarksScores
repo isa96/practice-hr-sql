@@ -1,0 +1,36 @@
+There is a database with the exam scores of every student. 
+Write a query to print the maximum and minimum marks of the students. 
+The result should be in the following format: MAX_MARKS MIN_MARKS
+here is 1 table: marks.
+
+marks
+Name	Type	Description
+ID	STRING	This is the student's ID. It is the primary key.
+MARKS	INTEGER	These are the marks scored.
+Sample Data Tables
+marks
+ID	MARKS
+abc123	30
+def456	70
+def123	50
+ 
+
+Sample Output
+
+70 30
+Explanation
+
+Max marks = 70
+
+Min marks = 30
+
+
+
+// CODE
+/*
+Enter your query below.
+Please append a semicolon ";" at the end of the query
+*/
+SELECT MAX(marks), MIN(marks)
+FROM marks;
+ 
